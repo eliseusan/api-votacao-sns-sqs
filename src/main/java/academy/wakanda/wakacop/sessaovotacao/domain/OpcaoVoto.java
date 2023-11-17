@@ -1,5 +1,5 @@
 package academy.wakanda.wakacop.sessaovotacao.domain;
 
-public enum StatusSessaoVotacao {
-    ABERTA, FECHADA;
+public enum OpcaoVoto {
+    SIM, NAO;
 }
