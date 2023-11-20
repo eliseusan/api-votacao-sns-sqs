@@ -5,12 +5,15 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @RequiredArgsConstructor
 @RestController
 @Log4j2
 public class SessaoVotacaoController implements SessaoVotacaoAPI {
 
     private final SessaoVotacaoService sessaoVotacaoService;
+
     @Override
     public SessaoAberturaResponse abreSessao(SessaoAberturaRequest sessaoAberturaRequest) {
         log.info("[start] SessaoVotacaoController - abreSessao");
@@ -18,4 +21,15 @@ public class SessaoVotacaoController implements SessaoVotacaoAPI {
         log.info("[finish] SessaoVotacaoController - abreSessao");
         return sessaoAberturaResponse;
     }
+
+    @Override
+    public VotoResponse recebeVoto(UUID idSessao, VotoRequest novoVoto) {
+        log.info("[start] SessaoVotacaoController - recebeVoto");
+        log.info("[idSessao] {}", idSessao);
+        VotoResponse votoResponse = sessaoVotacaoService.recebeVoto(idSessao, novoVoto);
+        log.info("[finish] SessaoVotacaoController - recebeVoto");
+        return votoResponse;
+    }
+
+
 }
