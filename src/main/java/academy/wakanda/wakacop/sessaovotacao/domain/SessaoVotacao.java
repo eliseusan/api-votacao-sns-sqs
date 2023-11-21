@@ -52,20 +52,20 @@ public class SessaoVotacao {
         validaSessaoAberta();
         validaAssociado(votoRequest.getCpfAssociado());
         VotoPauta voto = new VotoPauta(this, votoRequest);
-        votos.put(votoRequest.getCpfAssociado(), voto);
+        votos.put(votoRequest.getCpfAssociado(),voto);
         return voto;
     }
 
     private void validaSessaoAberta() {
         atualizaStatus();
-        if (this.status.equals(StatusSessaoVotacao.FECHADA)) {
+        if(this.status.equals(StatusSessaoVotacao.FECHADA)) {
             throw new RuntimeException("Sessão está fechada!");
         }
     }
 
     private void atualizaStatus() {
-        if (this.status.equals(StatusSessaoVotacao.ABERTA)) {
-            if (LocalDateTime.now().isAfter(this.momentoEncerramento)) {
+        if(this.status.equals(StatusSessaoVotacao.ABERTA)) {
+            if(LocalDateTime.now().isAfter(this.momentoEncerramento)) {
                 fechaSessao();
             }
         }
@@ -76,7 +76,7 @@ public class SessaoVotacao {
     }
 
     private void validaAssociado(String cpfAssociado) {
-        if (this.votos.containsKey(cpfAssociado)) {
+        if(this.votos.containsKey(cpfAssociado)){
             throw new RuntimeException("Associado Já Votou nessa Sessão!");
         }
     }
