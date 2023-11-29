@@ -14,7 +14,7 @@ public class AssociadoApplicationService implements AssociadoService {
     @Override
     public void validaAssociadoAptoVoto(String cpfAssociado) {
         log.info("[start] AssociadoApplicationService - validaAssociadoAptoVoto");
-        ConsultaCpfResponse consultaCpfResponse = serproClientFeign.consultaCPF(cpfAssociado);
+        ConsultaCpfResponse consultaCpfResponse = serproClientFeign.consultaCPF(TOKEN,cpfAssociado);
         valida(consultaCpfResponse);
         log.info("[finish] AssociadoApplicationService - validaAssociadoAptoVoto");
     }
@@ -24,4 +24,5 @@ public class AssociadoApplicationService implements AssociadoService {
             throw new RuntimeException("CPF do associado Inválido");
         }
     }
+    private static final String TOKEN = "Bearer 06aef429-a981-3ec5-a1f8-71d38d86481e";
 }
