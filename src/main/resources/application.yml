@@ -11,7 +11,7 @@ spring:
     driverClassName: org.postgresql.Driver
     url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/postgres?currentSchema=wakacop}
     username: ${DB_USERNAME:postgres}
-    password: ${DB_PASSWORD:1234}
+    password: ${DB_PASSWORD:postgres}
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       poolName: SpringBootJPAHikariCP
