@@ -22,6 +22,4 @@ public class VotoResponse {
         this.cpfAssociado = voto.getCpfAssociado();
         this.momentoVoto = voto.getMomentoVoto();
     }
-
-
 }
